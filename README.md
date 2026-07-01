@@ -37,8 +37,8 @@
 ## インストール
 
 ```bash
-git clone https://github.com/QuQuLa89/Gi-Kobun-Maker.git
-cd Gi-Kobun-Maker
+git clone https://github.com/QuQuLa89/News-Kanji-Extractor.git
+cd News-Kanji-Extractor
 python -m venv .venv
 # Windows: .venv\Scripts\activate
 # macOS/Linux: source .venv/bin/activate
