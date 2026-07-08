@@ -24,31 +24,29 @@
 │   ├── test_extractor.py    # 抽出ロジックのユニットテスト
 │   └── test_writer.py       # ファイル出力ロジックのユニットテスト
 ├── conftest.py
-├── requirements.txt
-├── requirements-dev.txt
+├── pyproject.toml
+├── poetry.lock
 ├── LICENSE
 └── .gitignore
 ```
 
 ## 必要要件
 
-- Python 3.9 以上
+- Python 3.10 以上
+- [Poetry](https://python-poetry.org/)
 
 ## インストール
 
 ```bash
 git clone https://github.com/QuQuLa89/News-Kanji-Extractor.git
 cd News-Kanji-Extractor
-python -m venv .venv
-# Windows: .venv\Scripts\activate
-# macOS/Linux: source .venv/bin/activate
-pip install -r requirements.txt
+poetry install
 ```
 
 ## 使い方
 
 ```bash
-python main.py
+poetry run python main.py
 ```
 
 実行後、プロンプトが表示されるのでニュース記事のURLを入力してください。続けて出力形式（`txt`/`csv`/`html`/`xlsx`）と保存先ファイルパスを入力すると、抽出結果がファイルに保存されます（出力形式を空欄のままEnterすると、ファイル保存はスキップされます）。
@@ -63,9 +61,10 @@ result.csv に保存しました。
 
 ## テスト
 
+`pytest` は dev 依存として `pyproject.toml` に含まれているため、`poetry install` 済みであれば追加作業は不要です。
+
 ```bash
-pip install -r requirements-dev.txt
-pytest
+poetry run pytest
 ```
 
 ネットワークアクセスを伴うスクレイピング処理自体はテスト対象外とし、抽出ロジック (`kanji_extractor/extractor.py`) とファイル出力ロジック (`kanji_extractor/writer.py`) のみを単体テストしています。
