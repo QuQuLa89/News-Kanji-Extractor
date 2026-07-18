@@ -35,7 +35,9 @@ def fetch_article_text(url: str) -> str:
     if text:
         return text
 
-    logger.info("newspaper3kで本文を取得できなかったため、BeautifulSoupでフォールバックします。")
+    logger.info(
+        "newspaper3kで本文を取得できなかったため、BeautifulSoupでフォールバックします。"
+    )
     text = _fetch_with_beautifulsoup(url)
     if text:
         return text
@@ -56,7 +58,9 @@ def _fetch_with_newspaper(url: str) -> str:
 
 def _fetch_with_beautifulsoup(url: str) -> str:
     try:
-        response = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
+        response = requests.get(
+            url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT
+        )
         response.raise_for_status()
     except requests.RequestException as exc:
         logger.warning("requestsでの取得に失敗しました: %s", exc)

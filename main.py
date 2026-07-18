@@ -46,7 +46,9 @@ def main() -> int:
         print("出力形式が入力されなかったため、ファイル保存を行いません。")
         return 0
 
-    output_path = input(f"保存先のファイルパスを入力してください (例: output.{fmt}): ").strip()
+    output_path = input(
+        f"保存先のファイルパスを入力してください (例: output.{fmt}): "
+    ).strip()
     if not output_path:
         output_path = f"output.{fmt}"
 
