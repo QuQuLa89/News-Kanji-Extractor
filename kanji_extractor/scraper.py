@@ -66,8 +66,14 @@ def _fetch_with_beautifulsoup(url: str) -> str:
         logger.warning("requestsでの取得に失敗しました: %s", exc)
         return ""
 
-    response.encoding = response.apparent_encoding
-    soup = BeautifulSoup(response.text, "html.parser")
+    encoding = response.encoding
+    if not encoding or encoding.lower() == "iso-8859-1":
+        encoding = response.apparent_encoding or "utf-8"
+    try:
+        html = response.content.decode(encoding, errors="replace")
+    except (LookupError, UnicodeDecodeError):
+        html = response.content.decode("utf-8", errors="replace")
+    soup = BeautifulSoup(html, "html.parser")
 
     for tag in soup(["script", "style", "noscript"]):
         tag.decompose()

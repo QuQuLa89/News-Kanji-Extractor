@@ -57,6 +57,9 @@ def main() -> int:
     except UnsupportedFormatError as exc:
         print(f"エラー: {exc}", file=sys.stderr)
         return 1
+    except OSError as exc:
+        print(f"ファイル保存エラー: {exc}", file=sys.stderr)
+        return 1
 
     print(f"{saved_path} に保存しました。")
     return 0
