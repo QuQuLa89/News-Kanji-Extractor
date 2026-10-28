@@ -51,7 +51,7 @@ def _fetch_with_newspaper(url: str) -> str:
         article.download()
         article.parse()
         return article.text.strip()
-    except Exception as exc:  # newspaper3kは多様な例外を投げるため広く捕捉する
+    except Exception as exc:  # noqa: BLE001  # newspaper3kは多様な例外を投げるため広く捕捉する
         logger.warning("newspaper3kでの取得に失敗しました: %s", exc)
         return ""
 
