@@ -6,8 +6,8 @@ from .writer import SUPPORTED_FORMATS, UnsupportedFormatError, save_output
 
 __version__ = "0.2.0"
 __all__ = [
-    "ArticleFetchError",
     "SUPPORTED_FORMATS",
+    "ArticleFetchError",
     "UnsupportedFormatError",
     "extract_kanji",
     "fetch_article_text",
